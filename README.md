@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Testing React Apps
 
-## Getting Started
+This is the starter project for my Reacting testing course where you'll learn everything you need to know to effectively test React apps. You can find the full course at: 
 
-First, run the development server:
+https://codewithmosh.com 
+
+## About this Project 
+
+This is a React app built with the following technologies and libraries: 
+
+- Auth0 
+- Tailwind 
+- RadixUI
+- React Router 
+- React Query  
+- Redux Toolkit 
+
+Please follow these instructions carefully to setup this project on your machine. 
+
+## Setting up Auth0 for Authentication
+
+1. **Sign up for an Auth0 Account:**
+
+   If you don't already have an Auth0 account, you can sign up for one at [https://auth0.com/](https://auth0.com/). Auth0 offers a free tier that you can use for your project.
+
+2. **Create a New Application:**
+
+   - Log in to your Auth0 account.
+   - Go to the Auth0 Dashboard.
+   - Click on "Applications" in the left sidebar.
+   - Click the "Create Application" button.
+   - Give your application a name (e.g., "My React App").
+   - Select "Single Page Web Applications" as the application type.
+
+3. **Configure Application Settings:**
+
+   - On the application settings page, configure the following settings:
+     - Allowed Callback URLs: `http://localhost:5173` 
+     - Allowed Logout URLs: `http://localhost:5173` 
+     - Allowed Web Origins: `http://localhost:5173`
+   - Save the changes.
+
+4. **Obtain Auth0 Domain and ClientID:**
+
+   - On the application settings page, you will find your Auth0 Domain and Client ID near the top of the page.
+   - Copy the Auth0 Domain (e.g., `your-auth0-domain.auth0.com`) and Client ID (e.g., `your-client-id`).
+
+5. **Create a `.env.local` File:**
+
+   - In the root directory of the project, you'll find a sample `.env` file. Make a copy and save it as `.env.local`.
+   - Replace the Auth0 Domain and Client ID with the actual values you obtained from Auth0.
+
+
+## Running the App
+
+Now that you have set up Auth0 and configured your environment variables, you can run the React app using the following commands:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the back-end process at `http://localhost:3000`. If port 3000 is in use on your machine, update the port number in the following files and run `npm start` again: 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- json-server.json
+- src/main.tsx
