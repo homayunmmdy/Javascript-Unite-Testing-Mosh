@@ -1,5 +1,5 @@
 import { it, expect, describe } from "vitest";
-import { getCoupons } from "../src/core";
+import { calculateDiscount, getCoupons } from "../src/core";
 
 describe("getCoupons", () => {
   it("should return an arrays of coupons", () => {
@@ -25,5 +25,28 @@ describe("getCoupons", () => {
       expect(coupons.discount).toBeGreaterThan(0);
       expect(coupons.discount).toBeLessThan(1);
     });
+  });
+});
+
+describe("calculateDiscount", () => {
+  it("should reurn discoundted price if given valid code", () => {
+    expect(calculateDiscount(10, "SAVE10")).toBe(9);
+    expect(calculateDiscount(10, "SAVE20")).toBe(8);
+  });
+
+  it("should handle none-numeric price", () => {
+    expect(calculateDiscount("10", "SAVE10")).toMatch(/Invalid/i);
+  });
+
+  it("should handle negative price", () => {
+    expect(calculateDiscount(-10, "SAVE10")).toMatch(/Invalid/i);
+  });
+
+  it("should handle none-string discount code", () => {
+    expect(calculateDiscount(10, 10)).toMatch(/Invalid/i);
+  });
+
+  it("should handle invalid discount code", () => {
+    expect(calculateDiscount(10, "INVALIDE")).toBe(10)
   });
 });
