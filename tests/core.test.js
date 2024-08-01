@@ -1,5 +1,12 @@
 import { it, expect, describe } from "vitest";
-import { calculateDiscount, getCoupons, isPriceInRange, isValidUsername, validateUserInput } from "../src/core";
+import {
+  calculateDiscount,
+  canDrive,
+  getCoupons,
+  isPriceInRange,
+  isValidUsername,
+  validateUserInput,
+} from "../src/core";
 
 describe("getCoupons", () => {
   it("should return an arrays of coupons", () => {
@@ -61,11 +68,11 @@ describe("validateUserInput", () => {
   });
 
   it("should return an error if username is less than 3 characters", () => {
-    expect(validateUserInput('ho', 18)).toMatch(/invalid/i);
+    expect(validateUserInput("ho", 18)).toMatch(/invalid/i);
   });
 
   it("should return an error if username is longer than 255 characters", () => {
-    expect(validateUserInput('H'.repeat(256), 18)).toMatch(/invalid/i);
+    expect(validateUserInput("H".repeat(256), 18)).toMatch(/invalid/i);
   });
 
   it("should return an error if age is not a number", () => {
@@ -86,40 +93,64 @@ describe("validateUserInput", () => {
   });
 });
 
-describe('isPriceInRange', () => {
-  it('should return false when the price is outside the range ', () => {
-    expect(isPriceInRange(-10 , 0 , 100)).toBeFalsy();
-    expect(isPriceInRange(200 , 0 , 100)).toBeFalsy();
+describe("isPriceInRange", () => {
+  it("should return false when the price is outside the range ", () => {
+    expect(isPriceInRange(-10, 0, 100)).toBeFalsy();
+    expect(isPriceInRange(200, 0, 100)).toBeFalsy();
   });
-  it('should return true when the price is equal to the min or to the max ', () => {
-    expect(isPriceInRange(0 , 0 , 100)).toBeTruthy();
-    expect(isPriceInRange(100 , 0 , 100)).toBeTruthy();
+  it("should return true when the price is equal to the min or to the max ", () => {
+    expect(isPriceInRange(0, 0, 100)).toBeTruthy();
+    expect(isPriceInRange(100, 0, 100)).toBeTruthy();
   });
-    it('should return true when the price is within in the range ', () => {
-      expect(isPriceInRange(50 , 0 , 100)).toBeTruthy();
-    });
-})
+  it("should return true when the price is within in the range ", () => {
+    expect(isPriceInRange(50, 0, 100)).toBeTruthy();
+  });
+});
 
-describe('isValidUsername', () => {
+describe("isValidUsername", () => {
   const minLength = 5;
   const maxLength = 15;
-  it('should return false if username is too short ', () => {
-    expect(isValidUsername('a'.repeat(minLength - 1))).toBeFalsy()
+  it("should return false if username is too short ", () => {
+    expect(isValidUsername("a".repeat(minLength - 1))).toBeFalsy();
   });
-  it('should return false if username is too long ', () => {
-    expect(isValidUsername('a'.repeat(maxLength + 1))).toBeFalsy()
+  it("should return false if username is too long ", () => {
+    expect(isValidUsername("a".repeat(maxLength + 1))).toBeFalsy();
   });
-  it('should return true if username is at the min or max length', () => {
-    expect(isValidUsername('a'.repeat(minLength))).toBeTruthy()
-    expect(isValidUsername('a'.repeat(maxLength))).toBeTruthy()
+  it("should return true if username is at the min or max length", () => {
+    expect(isValidUsername("a".repeat(minLength))).toBeTruthy();
+    expect(isValidUsername("a".repeat(maxLength))).toBeTruthy();
   });
-  it('should return true if username is with in the length constraint', () => {
-    expect(isValidUsername('a'.repeat(minLength + 1))).toBeTruthy()
-    expect(isValidUsername('a'.repeat(maxLength - 1))).toBeTruthy()
+  it("should return true if username is with in the length constraint", () => {
+    expect(isValidUsername("a".repeat(minLength + 1))).toBeTruthy();
+    expect(isValidUsername("a".repeat(maxLength - 1))).toBeTruthy();
   });
-  it('should return false for invalid input types ', () => {
-    expect(isValidUsername(null)).toBeFalsy()
-    expect(isValidUsername(undefined)).toBeFalsy()
-    expect(isValidUsername(1)).toBeFalsy()
+  it("should return false for invalid input types ", () => {
+    expect(isValidUsername(null)).toBeFalsy();
+    expect(isValidUsername(undefined)).toBeFalsy();
+    expect(isValidUsername(1)).toBeFalsy();
   });
-})
+});
+
+describe("CanDrive", () => {
+  it("should return error for invalid country code ", () => {
+    expect(canDrive(20, "FR")).toMatch(/invalid/i);
+  });
+  it("should return true for under age in US", () => {
+    expect(canDrive(15, "US")).toBeFalsy();
+  });
+  it("should return true for min age in US", () => {
+    expect(canDrive(16, "US")).toBeTruthy();
+  });
+  it("should return true for eligible  in US", () => {
+    expect(canDrive(17, "US")).toBeTruthy();
+  });
+  it("should return true for under age in UK", () => {
+    expect(canDrive(16, "UK")).toBeFalsy();
+  });
+  it("should return true for min age in UK", () => {
+    expect(canDrive(17, "UK")).toBeTruthy();
+  });
+  it("should return true for eligible  in UK", () => {
+    expect(canDrive(18, "UK")).toBeTruthy();
+  });
+});
