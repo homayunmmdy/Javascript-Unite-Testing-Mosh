@@ -135,22 +135,18 @@ describe("CanDrive", () => {
   it("should return error for invalid country code ", () => {
     expect(canDrive(20, "FR")).toMatch(/invalid/i);
   });
-  it("should return true for under age in US", () => {
-    expect(canDrive(15, "US")).toBeFalsy();
-  });
-  it("should return true for min age in US", () => {
-    expect(canDrive(16, "US")).toBeTruthy();
-  });
-  it("should return true for eligible  in US", () => {
-    expect(canDrive(17, "US")).toBeTruthy();
-  });
-  it("should return true for under age in UK", () => {
-    expect(canDrive(16, "UK")).toBeFalsy();
-  });
-  it("should return true for min age in UK", () => {
-    expect(canDrive(17, "UK")).toBeTruthy();
-  });
-  it("should return true for eligible  in UK", () => {
-    expect(canDrive(18, "UK")).toBeTruthy();
-  });
+
+  it.each([
+    { age: 15, country: "US", result: false },
+    { age: 16, country: "US", result: true },
+    { age: 17, country: "US", result: true },
+    { age: 16, country: "UK", result: false },
+    { age: 17, country: "UK", result: true },
+    { age: 18, country: "UK", result: true },
+  ])(
+    "should return $result for $age , $country",
+    ({ age, country, result }) => {
+      expect(canDrive(age, country)).toBe(result);
+    }
+  );
 });
