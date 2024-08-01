@@ -94,17 +94,16 @@ describe("validateUserInput", () => {
 });
 
 describe("isPriceInRange", () => {
-  it("should return false when the price is outside the range ", () => {
-    expect(isPriceInRange(-10, 0, 100)).toBeFalsy();
-    expect(isPriceInRange(200, 0, 100)).toBeFalsy();
+  it.each([
+    { secenrio: "price < min", price: -10, result: false },
+    { secenrio: "price = min", price: 0, result: true },
+    { secenrio: "price between min and max", price: 50, result: true },
+    { secenrio: "price = max", price: 100, result: true },
+    { secenrio: "price > max", price: 200, result: false },
+  ])("should return $result when $secenrio", ({ price, result }) => {
+    expect(isPriceInRange(price, 0, 100)).toBe(result);
   });
-  it("should return true when the price is equal to the min or to the max ", () => {
-    expect(isPriceInRange(0, 0, 100)).toBeTruthy();
-    expect(isPriceInRange(100, 0, 100)).toBeTruthy();
-  });
-  it("should return true when the price is within in the range ", () => {
-    expect(isPriceInRange(50, 0, 100)).toBeTruthy();
-  });
+
 });
 
 describe("isValidUsername", () => {
