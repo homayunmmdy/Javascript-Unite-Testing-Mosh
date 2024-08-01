@@ -1,4 +1,12 @@
-import { it, expect, describe } from "vitest";
+import {
+  it,
+  expect,
+  describe,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+} from "vitest";
 import {
   calculateDiscount,
   canDrive,
@@ -152,13 +160,34 @@ describe("CanDrive", () => {
 
 describe("fetchData ", () => {
   it("should return a promise that will resolve to an array of numbers", async () => {
-    try {  
+    try {
       const result = await fetchData();
       expect(Array.isArray(result)).toBeTruthy;
       expect(result.length).toBeGreaterThan(0);
     } catch (error) {
-      expect(error).toHaveProperty('reason')
-      expect(error.reason).toMatch(/fail/i)
+      expect(error).toHaveProperty("reason");
+      expect(error.reason).toMatch(/fail/i);
     }
   });
+});
+
+describe("test suite", () => {
+  beforeAll(() => {
+    console.log("beforeAll called");
+  });
+
+  beforeEach(() => {
+    console.log("beforeEach called");
+  });
+  
+  afterEach(() => {
+    console.log("afterEach called");
+  });
+
+  afterAll(() => {
+    console.log("afterAll called");
+  });
+
+  it("test case 1", () => {});
+  it("test case 2", () => {});
 });
