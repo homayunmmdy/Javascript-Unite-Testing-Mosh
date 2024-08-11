@@ -12,7 +12,8 @@
     "coverage": "vitest run --coverage",
     "format": "prettier . --write",
     "lint": "eslint . --fix",
-    "check-types": "tsc"
+    "check-types": "tsc",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -21,6 +22,7 @@
     "@vitest/ui": "^1.6.0",
     "eslint": "^9.9.0",
     "globals": "^15.9.0",
+    "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1",
@@ -28,6 +30,7 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
-    "delay": "^6.0.0"
+    "delay": "^6.0.0",
+    "lint-staged": "^12.3.2"
   }
 }
