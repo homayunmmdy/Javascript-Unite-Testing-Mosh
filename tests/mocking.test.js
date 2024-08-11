@@ -2,6 +2,7 @@ import { vi, it, expect, describe, beforeEach } from "vitest";
 import {
   getPriceInCurrency,
   getShippingInfo,
+  isOnline,
   renderPage,
   signUp,
   submitOrder,
@@ -125,3 +126,19 @@ describe("signUp", () => {
     expect(args[1]).toMatch(/welcom/i);
   });
 });
+
+describe('isOnline', () => {
+  it('should return false if current hour is outside opening hours', () => {
+    vi.setSystemTime('2024-01-01 07:59');
+    expect(isOnline()).toBeFalsy()
+    vi.setSystemTime('2024-01-01 20:01');
+    expect(isOnline()).toBeFalsy()
+  });
+
+  it('should return true if current hour is within opening hours', () => {
+    vi.setSystemTime('2024-01-01 08:00');
+    expect(isOnline()).toBeTruthy()
+    vi.setSystemTime('2024-01-01 19:59');
+    expect(isOnline()).toBeTruthy()
+  })
+})
