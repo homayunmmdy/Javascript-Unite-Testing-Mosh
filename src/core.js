@@ -30,7 +30,11 @@ export function calculateDiscount(price, discountCode) {
 export function validateUserInput(username, age) {
   let errors = [];
 
-  if (typeof username !== 'string' || username.length < 3 || username.length > 255) {
+  if (
+    typeof username !== 'string' ||
+    username.length < 3 ||
+    username.length > 255
+  ) {
     errors.push('Invalid username');
   }
 
@@ -51,7 +55,7 @@ export function isValidUsername(username) {
   const minLength = 5;
   const maxLength = 15;
 
-  if(!username) return false;
+  if (!username) return false;
   return username.length >= minLength && username.length <= maxLength;
 }
 
@@ -71,7 +75,7 @@ export function canDrive(age, countryCode) {
 
 // Lesson: Testing asynchronous code
 export function fetchData() {
-  return Promise.reject({reason : "Operation failed"})
+  return Promise.reject({ reason: 'Operation failed' });
   return new Promise((resolve) => {
     setTimeout(() => {
       const data = [1, 2, 3];
