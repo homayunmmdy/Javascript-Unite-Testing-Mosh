@@ -1,18 +1,29 @@
-# Mastering JavaScript Unit Testing
+## Mastering JavaScript Unit Testing – Learning Notes
 
-This repository contains all of the examples and exercises for my JavaScript testing course.
+![Screenshot 2025-05-22 181158](https://github.com/user-attachments/assets/39565792-8267-4ec2-ab96-810f748b93f7)
 
-- Understand the fundamentals of unit testing and its significance in JavaScript development.
-- Master the setup and usage of Vitest for effective JavaScript testing.
-- Discover the best practices for writing clean, maintainable, and trustworthy tests.
-- Learn various techniques to run and debug tests effectively.
-- Explore VSCode shortcuts to boost coding productivity.
-- Master working with matchers and crafting precise, effective assertions.
-- Practice positive, negative, and boundary testing to cover a wide range of test scenarios.
-- Break dependencies in your tests with mocks.
-- Improve code quality with static analysis, including TypeScript, ESLint, and Prettier.
-- Automate code quality checks with Husky to maintain high coding standards.
 
-You can find the full course at:
+This repository includes my notes and hands-on exercises from the [**Mastering JavaScript Unit Testing**](https://codewithmosh.com/p/mastering-javascript-unit-testing) course by Mosh Hamedani.
 
-https://codewithmosh.com
+### 📅 Course Timeline
+
+* **Started:** June 12, 2024
+* **Completed:** August 11, 2024
+
+### 🎯 About the Course
+
+This course offers a comprehensive, beginner-friendly path to mastering unit testing in JavaScript. It covers everything from the fundamentals to more advanced testing strategies and code quality automation. Key topics include:
+
+* Fundamentals of unit testing and its benefits
+* Writing maintainable and robust tests
+* Positive, negative, and boundary testing techniques
+* Creating parameterized tests for dynamic test cases
+* Using mocks and spies to isolate and observe behavior
+* Evaluating test coverage and ensuring no logic is left untested
+* Leveraging static analysis tools (ESLint, Prettier)
+* Preventing runtime errors with TypeScript
+* Automating quality checks with Husky
+
+### 💡 Why I Took This Course
+
+I took this course to build strong habits around **code quality and test reliability**. My goal was to become more confident in delivering production-ready code by learning how to properly test application logic, prevent regressions, and automate quality checks. This has significantly improved my workflow and helped ensure the stability of my JavaScript codebases.
