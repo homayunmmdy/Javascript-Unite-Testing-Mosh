@@ -1,4 +1,4 @@
-## Mastering JavaScript Unit Testing – Learning Notes
+## Mastering JavaScript Unit Testing 
 
 ![Screenshot 2025-05-22 181158](https://github.com/user-attachments/assets/39565792-8267-4ec2-ab96-810f748b93f7)
 
@@ -27,3 +27,8 @@ This course offers a comprehensive, beginner-friendly path to mastering unit tes
 ### 💡 Why I Took This Course
 
 I took this course to build strong habits around **code quality and test reliability**. My goal was to become more confident in delivering production-ready code by learning how to properly test application logic, prevent regressions, and automate quality checks. This has significantly improved my workflow and helped ensure the stability of my JavaScript codebases.
+
+### 📢 Note on Course Access
+Due to international sanctions in Iran, I was unable to access the official Code With Mosh platform directly. I obtained the course through a third-party distributor and completed it in full. While I do not have an official certificate, I carefully followed all course content and documented my learning here.
+
+For courses that included hands-on projects, the completed work is available in this repository. For others that were more theory-focused, I’ve included comprehensive notes, summaries, and all relevant materials as evidence of completion and understanding.
